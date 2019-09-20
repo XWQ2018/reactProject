@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-
-import { Button, WhiteSpace, WingBlank } from 'antd-mobile';
-// import 'antd-mobile/dist/antd-mobile.css';
+import { Button, WhiteSpace } from 'antd-mobile';
+require("@/assets/css/home.less");
 
 class Home extends Component {
     constructor(props) {
@@ -9,32 +8,34 @@ class Home extends Component {
         this.state = {
             num: 1
         }
+
+        this.addStateVal = this.addStateVal.bind(this);
     }
 
     addStateVal() {
-
+        let addMum = (this.state.num) + 5;
+        this.setState(state => (
+            {
+                num: addMum
+            }
+        ))
     }
-
-
 
     render() {
         return (
-            <div className="home">
-                <Button type="primary" onClick={() => console.log(99999)}>primary</Button><WhiteSpace />
+            <div className="home" >
+                <Button type="primary" onClick={
+                    this.addStateVal
+                }>primary</Button> <WhiteSpace />
                 <div>wellCome To Home</div>
                 <p>{this.state.num}</p>
                 <div>
                     <a href="#/Detail">to Detail</a>
                 </div>
                 <div>
-                    <button onClick={() => this.props.history.push({
-                        pathname: '/detail',
-                        params: {
-                            state: "6666"
-                        }
-                    })}>通过函数跳转detail</button>
+                    <button onClick={() => this.props.history.push(`/detail/${this.state.num}`)}>通过函数跳转detail</button>
                 </div>
-            </div>
+            </div >
         )
     }
 }

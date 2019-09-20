@@ -6,7 +6,9 @@ import App from './components/App';
 /* antd-mobile样式引入 */
 // import 'antd-mobile/dist/antd-mobile.css';
 
+
 import * as serviceWorker from './serviceWorker';
+console.log(process.env.NODE_ENV);
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
