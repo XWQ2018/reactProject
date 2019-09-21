@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-// import ReactDOM from 'react-dom';
-/* 路由 */
 import Router from "../router/router";
-
 
 class App extends Component {
 
     render() {
+        let containerStyle = {
+            padding: "10px"
+        };
         return (
-            <div>
+            <div style={containerStyle}>
                 <Router />
             </div>
         )
