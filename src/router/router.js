@@ -5,6 +5,8 @@ import { HashRouter, Route, Switch } from 'react-router-dom';
 import Home from "@/components/Home";
 import Detail from "@/components/Detail";
 
+// const Home = () => import("@/components/Home");
+
 
 const baseRouter = () => (
     <HashRouter>

@@ -4,20 +4,69 @@ class Detail extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            num: "我是子组件state的数据"
+            num: "我是来自子组件state的数据"
         }
         this.testFnc = this.testFnc.bind(this);
         this.componentDidMount = this.componentDidMount.bind(this);
     }
+    /* 
+    componentWillMount() {
+        console.log('componentWillMount----组件将要挂载到页面的时刻')
+    }
 
-    // shouldComponentUpdate(nextProps) {/* 控制组件的刷新 */
-    // console.log('shouldComponentUpdate', nextProps)
-    // }
+    componentDidMount() {
+        console.log('componentDidMount----组件挂载完成的时刻执行')
+    }
 
-    // componentWillReceiveProps(nextProps) { // 父组件重传props时就会调用这个方法
-    // console.log('componentWillReceiveProps', nextProps)
-    // this.setState({ someThings: nextProps.someThings });
-    // }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('shouldComponentUpdate---组件发生改变前执行')
+        return true
+    }
+
+    //shouldComponentUpdate返回true才会被执行。
+    componentWillUpdate() {
+        console.log('componentWillUpdate---组件更新前，shouldComponentUpdate函数之后执行')
+    }
+
+    componentDidUpdate(){
+        console.log('componentDidUpdate----组件更新之后执行')
+    }
+
+    componentWillReceiveProps(){
+        console.log('componentWillReceiveProps')
+    }
+
+
+    //当组件从页面中删除的时候执行
+    componentWillUnmount() {
+        console.log('child - componentWillUnmount')
+    }
+    shouldComponentUpdate(nextProps, nextState) {
+        if (nextProps.content !== this.props.content) {
+            return true
+        } else {
+            return false
+        }
+
+    }
+    
+    
+    */
+
+    shouldComponentUpdate(nextStates) {/* 控制组件是否重新渲染,props有变化就触发组件更新 */
+        console.log('shouldComponentUpdate', nextStates)
+        if (this.state.num === nextStates.num) {
+            return false;
+        }
+        return true;
+    }
+
+    componentWillReceiveProps(nextProps) { // 父组件重传props时就会调用这个方法
+        console.log('componentWillReceiveProps', nextProps)
+        this.setState({ someThings: nextProps.someThings });
+        console.log(this.state)
+    }
 
     /* 组件的挂载(Mounting)阶段的第三个时期,组件挂载到DOM后调用，且只会被调用一次。
     此阶段分为componentWillMount，render，componentDidMount三个时期。
@@ -28,6 +77,7 @@ class Detail extends Component {
     }
     testFnc() {
         console.log("Detail组件", this.props)
+        /* 调用父组件传过来的方法，并执行传入参数 */
         this.props.fnc(this.state.num)
 
     }

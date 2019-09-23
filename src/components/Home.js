@@ -7,7 +7,7 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            num: "我是父组件的值"
+            num: "我是来自父组件的值"
         }
 
         this.addStateVal = this.addStateVal.bind(this);
